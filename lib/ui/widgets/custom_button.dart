@@ -3,15 +3,20 @@ import '../../shared/themes.dart';
 
 class CustomButton extends StatelessWidget {
   final String title;
+  final double width;
   final Function() onPressed;
 
-  const CustomButton({Key? key, required this.title, required this.onPressed})
-      : super(key: key);
+  const CustomButton({
+    Key? key,
+    required this.title,
+    required this.onPressed,
+    this.width = double.infinity,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 210,
+      width: width,
       height: 50,
       child: TextButton(
         style: TextButton.styleFrom(

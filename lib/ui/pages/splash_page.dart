@@ -62,7 +62,10 @@ class SplashPage extends StatelessWidget {
                   ),
                   CustomButton(
                     title: 'Explore Now',
-                    onPressed: () {},
+                    width: 180,
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/home');
+                    },
                   )
                 ],
               ),
