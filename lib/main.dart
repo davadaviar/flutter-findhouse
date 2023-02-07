@@ -3,7 +3,7 @@ import 'package:flutter_findhouse/ui/pages/home_page.dart';
 import 'package:flutter_findhouse/ui/pages/splash_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (context) => SplashPage(),
-        '/home': (context) => HomaPage(),
+        '/home': (context) => HomePage(),
       },
     );
   }
