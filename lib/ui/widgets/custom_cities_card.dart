@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import '../../shared/themes.dart';
 
 class CustomCitiesCard extends StatelessWidget {
-
-  final int isSelected;
   final String title;
   final String imgUrl;
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_cities_card.dart';
+import 'package:flutter_findhouse/ui/widgets/custom_space_card.dart';
 import '../../shared/themes.dart';
 
 class HomePage extends StatelessWidget {
@@ -76,28 +77,28 @@ class HomePage extends StatelessWidget {
                     width: 20,
                   ),
                   CustomCitiesCard(
-                    title: 'Bandung',
+                    title: 'Surabaya',
                     imgUrl: 'assets/city3.png',
                   ),
                   SizedBox(
                     width: 20,
                   ),
                   CustomCitiesCard(
-                    title: 'Bandung',
+                    title: 'Pelembang',
                     imgUrl: 'assets/city4.png',
                   ),
                   SizedBox(
                     width: 20,
                   ),
                   CustomCitiesCard(
-                    title: 'Bandung',
+                    title: 'Aceh',
                     imgUrl: 'assets/city5.png',
                   ),
                   SizedBox(
                     width: 20,
                   ),
                   CustomCitiesCard(
-                    title: 'Bandung',
+                    title: 'Bogor',
                     imgUrl: 'assets/city6.png',
                   ),
                 ],
@@ -108,12 +109,73 @@ class HomePage extends StatelessWidget {
       );
     }
 
+    ;
+
+    Widget recommendedSpace() {
+      return Padding(
+        padding: EdgeInsets.only(
+          top: 30,
+          left: defaultMargin,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Recommended Space',
+              style: blackTextStyle.copyWith(
+                fontSize: 18,
+                fontWeight: regular,
+              ),
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            CustomSpaceCard(
+              title: 'Kuretakeso Hott',
+              imgUrl: 'assets/space1.png',
+              price: '\$52',
+              city: 'Bandung, Indonesia',
+              rate: 4.5,
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            CustomSpaceCard(
+              title: 'Roemah Ayang',
+              imgUrl: 'assets/space2.png',
+              price: '\$80',
+              city: 'Semarang, Indonesia',
+              rate: 5.0,
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            CustomSpaceCard(
+              title: 'Cangkrukan Mbah Min',
+              imgUrl: 'assets/space3.png',
+              price: '\$60',
+              city: 'Bogor, Indonesia',
+              rate: 4.8,
+            ),
+          ],
+        ),
+      );
+    }
+
+    ;
+
+    Widget tipsGuideline() {
+      return Container();
+    }
+
     return Scaffold(
       body: SafeArea(
         child: ListView(
           children: [
             header(),
             citiesSlide(),
+            recommendedSpace(),
+            tipsGuideline(),
           ],
         ),
       ),
