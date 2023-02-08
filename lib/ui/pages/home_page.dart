@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_cities_card.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_space_card.dart';
+import 'package:flutter_findhouse/ui/widgets/custom_tips_card.dart';
 import '../../shared/themes.dart';
 
 class HomePage extends StatelessWidget {
@@ -165,7 +166,43 @@ class HomePage extends StatelessWidget {
     ;
 
     Widget tipsGuideline() {
-      return Container();
+      return Container(
+        margin: EdgeInsets.only(
+          top: 30,
+        ),
+        padding: EdgeInsets.only(
+          left: defaultMargin,
+          right: defaultMargin,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Tips & Guidance',
+              style: blackTextStyle.copyWith(
+                fontSize: 18,
+                fontWeight: regular,
+              ),
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            CustomTipsCard(
+              title: 'City Guidelines',
+              subTitle: 'Updated 20 Apr',
+              imgUrl: 'assets/icon_city_guidelines.png',
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            CustomTipsCard(
+              title: 'Jakarta Fairship',
+              subTitle: 'Updated 11 Dec',
+              imgUrl: 'assets/icon_jakarta_fairship.png',
+            ),
+          ],
+        ),
+      );
     }
 
     return Scaffold(
