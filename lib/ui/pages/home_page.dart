@@ -75,6 +75,7 @@ class HomePage extends StatelessWidget {
                     CustomCitiesCard(
                       title: 'Bandung',
                       imgUrl: 'assets/city2.png',
+                      isPopular: true,
                     ),
                     SizedBox(
                       width: 20,
