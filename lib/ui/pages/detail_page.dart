@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_button.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_facilities_item.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_gallery_item.dart';
@@ -9,6 +10,15 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    launchUrl(url) async {
+      final uri = Uri.parse(url);
+      if (await canLaunchUrl(uri)) {
+        launchUrl(url);
+      } else {
+        throw (url);
+      }
+    }
+
     Widget header() {
       return Padding(
         padding: EdgeInsets.only(
@@ -214,9 +224,15 @@ class DetailPage extends StatelessWidget {
                     fontWeight: regular,
                   ),
                 ),
-                Image.asset(
-                  'assets/icon_location.png',
-                  width: 40,
+                GestureDetector(
+                  onTap: () {
+                    launchUrl(
+                        'https://www.google.com/maps/d/u/0/viewer?mid=1rhV4GjImlHrz7xSuoBil3mPFCBY&hl=en&ll=-7.794972035418176%2C110.36444149999998&z=16');
+                  },
+                  child: Image.asset(
+                    'assets/icon_location.png',
+                    width: 40,
+                  ),
                 )
               ],
             )
