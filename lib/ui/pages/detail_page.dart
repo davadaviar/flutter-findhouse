@@ -251,34 +251,34 @@ class DetailPage extends StatelessWidget {
             'assets/thumbnail.png',
             width: MediaQuery.of(context).size.width,
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: 50,
-              horizontal: defaultMargin,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Image.asset(
-                    'assets/btn_back.png',
-                    width: 50,
-                  ),
-                ),
-                Image.asset(
-                  'assets/btn_wishlist.png',
-                  width: 50,
-                ),
-              ],
-            ),
-          ),
           ListView(
             children: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: 20,
+                  horizontal: defaultMargin,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Image.asset(
+                        'assets/btn_back.png',
+                        width: 50,
+                      ),
+                    ),
+                    Image.asset(
+                      'assets/btn_wishlist.png',
+                      width: 50,
+                    ),
+                  ],
+                ),
+              ),
               SizedBox(
-                height: 300,
+                height: 200,
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
