@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_findhouse/ui/widgets/custom_button.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_facilities_item.dart';
+import 'package:flutter_findhouse/ui/widgets/custom_gallery_item.dart';
 import '../../shared/themes.dart';
 
 class DetailPage extends StatelessWidget {
@@ -8,67 +10,74 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget header() {
-      return Row(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Kuretakeso Hott',
-                style: blackTextStyle.copyWith(
-                  fontSize: 22,
-                  fontWeight: semiBold,
+      return Padding(
+        padding: EdgeInsets.only(
+          top: 20,
+          right: defaultMargin,
+          left: defaultMargin,
+        ),
+        child: Row(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Kuretakeso Hott',
+                  style: blackTextStyle.copyWith(
+                    fontSize: 22,
+                    fontWeight: semiBold,
+                  ),
                 ),
-              ),
-              Row(
-                children: [
-                  Text(
-                    '\$52',
-                    style: purpleTextStyle.copyWith(
-                      fontSize: 16,
-                      fontWeight: medium,
+                Row(
+                  children: [
+                    Text(
+                      '\$52',
+                      style: purpleTextStyle.copyWith(
+                        fontSize: 16,
+                        fontWeight: medium,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 3,
-                  ),
-                  Text(
-                    '/month',
-                    style: greyTextStyle.copyWith(
-                      fontSize: 16,
-                      fontWeight: light,
+                    SizedBox(
+                      width: 3,
                     ),
-                  )
-                ],
-              )
-            ],
-          ),
-          Spacer(),
-          Row(
-            children: [
-              Image.asset(
-                'assets/icon_star.png',
-                width: 20,
-              ),
-              Image.asset(
-                'assets/icon_star.png',
-                width: 20,
-              ),
-              Image.asset(
-                'assets/icon_star.png',
-                width: 20,
-              ),
-              Image.asset(
-                'assets/icon_star.png',
-                width: 20,
-              ),
-              Image.asset(
-                'assets/icon_star_grey.png',
-                width: 20,
-              ),
-            ],
-          )
-        ],
+                    Text(
+                      '/month',
+                      style: greyTextStyle.copyWith(
+                        fontSize: 16,
+                        fontWeight: light,
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+            Spacer(),
+            Row(
+              children: [
+                Image.asset(
+                  'assets/icon_star.png',
+                  width: 20,
+                ),
+                Image.asset(
+                  'assets/icon_star.png',
+                  width: 20,
+                ),
+                Image.asset(
+                  'assets/icon_star.png',
+                  width: 20,
+                ),
+                Image.asset(
+                  'assets/icon_star.png',
+                  width: 20,
+                ),
+                Image.asset(
+                  'assets/icon_star_grey.png',
+                  width: 20,
+                ),
+              ],
+            )
+          ],
+        ),
       );
     }
 
@@ -78,6 +87,8 @@ class DetailPage extends StatelessWidget {
       return Container(
         margin: EdgeInsets.only(
           top: 30,
+          left: defaultMargin,
+          right: defaultMargin,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,6 +121,124 @@ class DetailPage extends StatelessWidget {
               ],
             )
           ],
+        ),
+      );
+    }
+
+    ;
+
+    Widget detailGellery() {
+      return Container(
+        margin: EdgeInsets.only(
+          top: 30,
+          left: defaultMargin,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Photos',
+              style: blackTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: regular,
+              ),
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  CustomGalleryItem(
+                    imgUrl: 'assets/photo1.png',
+                  ),
+                  SizedBox(
+                    width: 16,
+                  ),
+                  CustomGalleryItem(
+                    imgUrl: 'assets/photo2.png',
+                  ),
+                  SizedBox(
+                    width: 16,
+                  ),
+                  CustomGalleryItem(
+                    imgUrl: 'assets/photo3.png',
+                  ),
+                  SizedBox(
+                    width: 16,
+                  ),
+                  CustomGalleryItem(
+                    imgUrl: 'assets/photo4.png',
+                  ),
+                  SizedBox(
+                    width: 16,
+                  ),
+                  CustomGalleryItem(
+                    imgUrl: 'assets/photo5.png',
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    ;
+
+    Widget detailLocation() {
+      return Padding(
+        padding: EdgeInsets.only(
+          top: 30,
+          left: defaultMargin,
+          right: defaultMargin,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Location',
+              style: blackTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: regular,
+              ),
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Jln. Kappan Sukses No. 20, \nPalembang',
+                  style: greyTextStyle.copyWith(
+                    fontSize: 14,
+                    fontWeight: regular,
+                  ),
+                ),
+                Image.asset(
+                  'assets/icon_location.png',
+                  width: 40,
+                )
+              ],
+            )
+          ],
+        ),
+      );
+    }
+
+    ;
+
+    Widget bookingButton() {
+      return Padding(
+        padding: EdgeInsets.only(
+          top: 30,
+          left: defaultMargin,
+          right: defaultMargin,
+          bottom: 60,
+        ),
+        child: CustomButton(
+          title: 'Book Now',
+          width: 380,
+          onPressed: () {},
         ),
       );
     }
@@ -159,19 +288,15 @@ class DetailPage extends StatelessWidget {
                     top: Radius.circular(20),
                   ),
                 ),
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    top: 20,
-                    left: defaultMargin,
-                    right: defaultMargin,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      header(),
-                      mainFacilities(),
-                    ],
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    header(),
+                    mainFacilities(),
+                    detailGellery(),
+                    detailLocation(),
+                    bookingButton(),
+                  ],
                 ),
               ),
             ],
