@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_findhouse/ui/pages/detail_page.dart';
+import 'package:flutter_findhouse/ui/pages/error_page.dart';
 import 'package:flutter_findhouse/ui/pages/home_page.dart';
 import 'package:flutter_findhouse/ui/pages/splash_page.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => SplashPage(),
         '/home': (context) => HomePage(),
         '/detail': (context) => DetailPage(),
+        '/error':(context) => ErrorPage(),
       },
     );
   }
