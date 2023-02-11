@@ -10,12 +10,11 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    launchUrl(url) async {
-      final uri = Uri.parse(url);
-      if (await canLaunchUrl(uri)) {
-        launchUrl(url);
+    _launchURL(url) async {
+      if (await launch(url)) {
+        await canLaunch(url);
       } else {
-        throw (url);
+        throw 'Could not launch $url';
       }
     }
 
@@ -226,7 +225,7 @@ class DetailPage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    launchUrl(
+                    _launchURL(
                         'https://www.google.com/maps/d/u/0/viewer?mid=1rhV4GjImlHrz7xSuoBil3mPFCBY&hl=en&ll=-7.794972035418176%2C110.36444149999998&z=16');
                   },
                   child: Image.asset(
@@ -254,7 +253,9 @@ class DetailPage extends StatelessWidget {
         child: CustomButton(
           title: 'Book Now',
           width: 380,
-          onPressed: () {},
+          onPressed: () {
+            _launchURL('tel://+6281357109966');
+          },
         ),
       );
     }
