@@ -22,7 +22,7 @@ class CustomSpaceCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(defaultRadius),
                 image: DecorationImage(
-                  image: AssetImage(this.space.imgUrl),
+                  image: AssetImage(this.space.imageUrl),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -51,7 +51,7 @@ class CustomSpaceCard extends StatelessWidget {
                           width: 5,
                         ),
                         Text(
-                          '${this.space.rate}/5',
+                          '${this.space.rating}/5',
                           style: whiteTextStyle.copyWith(
                             fontSize: 14,
                             fontWeight: medium,

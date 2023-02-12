@@ -159,9 +159,9 @@ class HomePage extends StatelessWidget {
                 Space(
                   id: 0,
                   name: 'Kuratakeso Hott',
-                  imgUrl: 'assets/space1.png',
+                  imageUrl: 'assets/space1.png',
                   price: 52,
-                  rate: 4,
+                  rating: 4,
                   city: 'Bandung, Indonesia',
                 ),
               ),
@@ -171,9 +171,9 @@ class HomePage extends StatelessWidget {
               CustomSpaceCard(Space(
                 id: 1,
                 name: 'Roemah Ayang',
-                imgUrl: 'assets/space2.png',
+                imageUrl: 'assets/space2.png',
                 price: 80,
-                rate: 5,
+                rating: 5,
                 city: 'Semarang, Indonesia',
               )),
               SizedBox(
@@ -183,9 +183,9 @@ class HomePage extends StatelessWidget {
                 Space(
                   id: 2,
                   name: 'Cangkruakan Mbah Min',
-                  imgUrl: 'assets/space3.png',
+                  imageUrl: 'assets/space3.png',
                   price: 60,
-                  rate: 4,
+                  rating: 4,
                   city: 'Bogor, Indonesia',
                 ),
               ),
