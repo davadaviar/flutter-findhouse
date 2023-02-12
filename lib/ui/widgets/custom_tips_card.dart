@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_findhouse/models/tips.dart';
 import '../../shared/themes.dart';
 
 class CustomTipsCard extends StatelessWidget {
-  final String title;
-  final String subTitle;
-  final String imgUrl;
+  final Tips tips;
 
-  const CustomTipsCard({
-    Key? key,
-    required this.title,
-    required this.subTitle,
-    required this.imgUrl,
-  }) : super(key: key);
+  CustomTipsCard(this.tips);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +17,7 @@ class CustomTipsCard extends StatelessWidget {
             height: 80,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(imgUrl),
+                image: AssetImage(this.tips.imgUrl),
               ),
             ),
           ),
@@ -34,7 +28,7 @@ class CustomTipsCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                title,
+                this.tips.title,
                 style: blackTextStyle.copyWith(
                   fontSize: 18,
                   fontWeight: semiBold,
@@ -44,7 +38,7 @@ class CustomTipsCard extends StatelessWidget {
                 height: 5,
               ),
               Text(
-                subTitle,
+                this.tips.subTitle,
                 style: greyTextStyle.copyWith(
                   fontSize: 14,
                   fontWeight: regular,

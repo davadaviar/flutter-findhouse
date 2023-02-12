@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_findhouse/models/city.dart';
+import 'package:flutter_findhouse/models/space.dart';
+import 'package:flutter_findhouse/models/tips.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_bottom_navbar.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_cities_card.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_space_card.dart';
@@ -66,44 +69,62 @@ class HomePage extends StatelessWidget {
                 child: Row(
                   children: [
                     CustomCitiesCard(
-                      title: 'Jakarta',
-                      imgUrl: 'assets/city1.png',
+                      City(
+                        id: 0,
+                        name: 'Jakarta',
+                        imgUrl: 'assets/city1.png',
+                      ),
                     ),
                     SizedBox(
                       width: 20,
                     ),
                     CustomCitiesCard(
-                      title: 'Bandung',
-                      imgUrl: 'assets/city2.png',
-                      isPopular: true,
+                      City(
+                        id: 1,
+                        name: 'Bandung',
+                        imgUrl: 'assets/city2.png',
+                        isSelected: true,
+                      ),
                     ),
                     SizedBox(
                       width: 20,
                     ),
                     CustomCitiesCard(
-                      title: 'Surabaya',
-                      imgUrl: 'assets/city3.png',
+                      City(
+                        id: 2,
+                        name: 'Surabaya',
+                        imgUrl: 'assets/city3.png',
+                      ),
                     ),
                     SizedBox(
                       width: 20,
                     ),
                     CustomCitiesCard(
-                      title: 'Pelembang',
-                      imgUrl: 'assets/city4.png',
+                      City(
+                        id: 3,
+                        name: 'Pelembang',
+                        imgUrl: 'assets/city4.png',
+                      ),
                     ),
                     SizedBox(
                       width: 20,
                     ),
                     CustomCitiesCard(
-                      title: 'Aceh',
-                      imgUrl: 'assets/city5.png',
+                      City(
+                        id: 4,
+                        name: 'Bogor',
+                        imgUrl: 'assets/city5.png',
+                      ),
                     ),
                     SizedBox(
                       width: 20,
                     ),
                     CustomCitiesCard(
-                      title: 'Bogor',
-                      imgUrl: 'assets/city6.png',
+                      City(
+                        id: 5,
+                        name: 'Aceh',
+                        imgUrl: 'assets/city6.png',
+                      ),
                     ),
                   ],
                 ),
@@ -135,31 +156,38 @@ class HomePage extends StatelessWidget {
                 height: 16,
               ),
               CustomSpaceCard(
-                title: 'Kuretakeso Hott',
-                imgUrl: 'assets/space1.png',
-                price: '\$52',
-                city: 'Bandung, Indonesia',
-                rate: 4.5,
+                Space(
+                  id: 0,
+                  name: 'Kuratakeso Hott',
+                  imgUrl: 'assets/space1.png',
+                  price: 52,
+                  rate: 4,
+                  city: 'Bandung, Indonesia',
+                ),
               ),
               SizedBox(
                 height: 30,
               ),
-              CustomSpaceCard(
-                title: 'Roemah Ayang',
+              CustomSpaceCard(Space(
+                id: 1,
+                name: 'Roemah Ayang',
                 imgUrl: 'assets/space2.png',
-                price: '\$80',
+                price: 80,
+                rate: 5,
                 city: 'Semarang, Indonesia',
-                rate: 5.0,
-              ),
+              )),
               SizedBox(
                 height: 30,
               ),
               CustomSpaceCard(
-                title: 'Cangkrukan Mbah Min',
-                imgUrl: 'assets/space3.png',
-                price: '\$60',
-                city: 'Bogor, Indonesia',
-                rate: 4.8,
+                Space(
+                  id: 2,
+                  name: 'Cangkruakan Mbah Min',
+                  imgUrl: 'assets/space3.png',
+                  price: 60,
+                  rate: 4,
+                  city: 'Bogor, Indonesia',
+                ),
               ),
             ],
           ),
@@ -192,17 +220,21 @@ class HomePage extends StatelessWidget {
                 height: 16,
               ),
               CustomTipsCard(
-                title: 'City Guidelines',
-                subTitle: 'Updated 20 Apr',
-                imgUrl: 'assets/icon_city_guidelines.png',
+                Tips(
+                  title: 'City Guidelines',
+                  subTitle: 'Updated 20 Apr',
+                  imgUrl: 'assets/icon_city_guidelines.png',
+                ),
               ),
               SizedBox(
                 height: 20,
               ),
               CustomTipsCard(
-                title: 'Jakarta Fairship',
-                subTitle: 'Updated 11 Dec',
-                imgUrl: 'assets/icon_jakarta_fairship.png',
+                Tips(
+                  title: 'Jakarta Fairship',
+                  subTitle: 'Updated 11 Dec',
+                  imgUrl: 'assets/icon_jakarta_fairship.png',
+                ),
               ),
             ],
           ),

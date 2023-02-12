@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_findhouse/models/city.dart';
 import '../../shared/themes.dart';
 
 class CustomCitiesCard extends StatelessWidget {
-  final String title;
-  final String imgUrl;
-  final bool isPopular;
+  final City city;
 
-  const CustomCitiesCard({
-    Key? key,
-    required this.title,
-    required this.imgUrl,
-    this.isPopular = false,
-  }) : super(key: key);
+  CustomCitiesCard(this.city);
 
+  // ignore: empty_constructor_bodies
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -23,8 +18,8 @@ class CustomCitiesCard extends StatelessWidget {
           height: 150,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(defaultRadius),
-            image:
-                DecorationImage(image: AssetImage(imgUrl), fit: BoxFit.cover),
+            image: DecorationImage(
+                image: AssetImage(this.city.imgUrl), fit: BoxFit.cover),
           ),
           child: Align(
             alignment: Alignment.bottomCenter,
@@ -40,7 +35,7 @@ class CustomCitiesCard extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  title,
+                  this.city.name,
                   style: blackTextStyle.copyWith(
                     fontSize: 16,
                     fontWeight: semiBold,
@@ -50,7 +45,7 @@ class CustomCitiesCard extends StatelessWidget {
             ),
           ),
         ),
-        isPopular
+        this.city.isSelected
             ? Container(
                 margin: EdgeInsets.only(top: 15, left: 70),
                 width: 50,

@@ -1,21 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_findhouse/models/space.dart';
 import '../../shared/themes.dart';
 
 class CustomSpaceCard extends StatelessWidget {
-  final String title;
-  final String imgUrl;
-  final String price;
-  final String city;
-  final double rate;
+  final Space space;
 
-  const CustomSpaceCard({
-    Key? key,
-    required this.title,
-    required this.imgUrl,
-    required this.price,
-    required this.city,
-    required this.rate,
-  }) : super(key: key);
+  CustomSpaceCard(this.space);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +22,7 @@ class CustomSpaceCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(defaultRadius),
                 image: DecorationImage(
-                  image: AssetImage(imgUrl),
+                  image: AssetImage(this.space.imgUrl),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -61,7 +51,7 @@ class CustomSpaceCard extends StatelessWidget {
                           width: 5,
                         ),
                         Text(
-                          rate.toString(),
+                          '${this.space.rate}/5',
                           style: whiteTextStyle.copyWith(
                             fontSize: 14,
                             fontWeight: medium,
@@ -79,7 +69,7 @@ class CustomSpaceCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    title,
+                    this.space.name,
                     style: blackTextStyle.copyWith(
                       fontSize: 18,
                       fontWeight: semiBold,
@@ -91,7 +81,7 @@ class CustomSpaceCard extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        price,
+                        '\$${this.space.price}',
                         style: purpleTextStyle.copyWith(
                           fontSize: 14,
                           fontWeight: semiBold,
@@ -113,7 +103,7 @@ class CustomSpaceCard extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    city,
+                    this.space.city,
                     style: greyTextStyle.copyWith(
                       fontSize: 16,
                       fontWeight: regular,

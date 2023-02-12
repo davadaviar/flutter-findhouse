@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_findhouse/models/facilities.dart';
+import 'package:flutter_findhouse/models/gallery.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_button.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_facilities_item.dart';
@@ -113,19 +115,25 @@ class DetailPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomFacilitiesItem(
-                  title: 'Kitchen',
-                  imgUrl: 'assets/icon_kitchen.png',
-                  item: '2',
+                  Facilities(
+                    title: 'Kitchen',
+                    imgUrl: 'assets/icon_kitchen.png',
+                    item: 2,
+                  ),
                 ),
                 CustomFacilitiesItem(
-                  title: 'Bedroom',
-                  imgUrl: 'assets/icon_bedroom.png',
-                  item: '3',
+                  Facilities(
+                    title: 'Bedroom',
+                    imgUrl: 'assets/icon_bedroom.png',
+                    item: 3,
+                  ),
                 ),
                 CustomFacilitiesItem(
-                  title: 'Cupboard',
-                  imgUrl: 'assets/icon_lemari.png',
-                  item: '3',
+                  Facilities(
+                    title: 'Cupboard',
+                    imgUrl: 'assets/icon_lemari.png',
+                    item: 3,
+                  ),
                 ),
               ],
             )
@@ -157,31 +165,31 @@ class DetailPage extends StatelessWidget {
               child: Row(
                 children: [
                   CustomGalleryItem(
-                    imgUrl: 'assets/photo1.png',
+                    Gallery(imgUrl: 'assets/photo1.png'),
                   ),
                   SizedBox(
                     width: 16,
                   ),
                   CustomGalleryItem(
-                    imgUrl: 'assets/photo2.png',
+                    Gallery(imgUrl: 'assets/photo2.png'),
                   ),
                   SizedBox(
                     width: 16,
                   ),
                   CustomGalleryItem(
-                    imgUrl: 'assets/photo3.png',
+                    Gallery(imgUrl: 'assets/photo3.png'),
                   ),
                   SizedBox(
                     width: 16,
                   ),
                   CustomGalleryItem(
-                    imgUrl: 'assets/photo4.png',
+                    Gallery(imgUrl: 'assets/photo4.png'),
                   ),
                   SizedBox(
                     width: 16,
                   ),
                   CustomGalleryItem(
-                    imgUrl: 'assets/photo5.png',
+                    Gallery(imgUrl: 'assets/photo5.png'),
                   ),
                 ],
               ),

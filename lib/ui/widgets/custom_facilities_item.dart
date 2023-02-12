@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_findhouse/models/facilities.dart';
 import '../../shared/themes.dart';
 
 class CustomFacilitiesItem extends StatelessWidget {
-  final String title;
-  final String imgUrl;
-  final String item;
+  final Facilities facilities;
 
-  const CustomFacilitiesItem({
-    Key? key,
-    required this.title,
-    required this.imgUrl,
-    required this.item,
-  }) : super(key: key);
+  CustomFacilitiesItem(this.facilities);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +16,7 @@ class CustomFacilitiesItem extends StatelessWidget {
           height: 10,
         ),
         Image.asset(
-          imgUrl,
+          this.facilities.imgUrl,
           width: 30,
           height: 30,
         ),
@@ -32,7 +26,7 @@ class CustomFacilitiesItem extends StatelessWidget {
         Row(
           children: [
             Text(
-              item,
+              '${this.facilities.item}',
               style: purpleTextStyle.copyWith(
                 fontSize: 14,
                 fontWeight: semiBold,
@@ -42,7 +36,7 @@ class CustomFacilitiesItem extends StatelessWidget {
               width: 5,
             ),
             Text(
-              title,
+              this.facilities.title,
               style: greyTextStyle.copyWith(
                 fontSize: 14,
                 fontWeight: regular,
