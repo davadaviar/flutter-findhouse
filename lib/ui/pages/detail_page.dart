@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_button.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_facilities_item.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_gallery_item.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import '../../shared/themes.dart';
 
 class DetailPage extends StatelessWidget {
@@ -13,10 +14,11 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _launchURL(url) async {
-      if (await launch(url)) {
-        await canLaunch(url);
+      if (await canLaunchUrlString(url)) {
+        await launchUrlString(url);
       } else {
-        throw 'Could not launch $url';
+        // throw 'Could not launch $url';
+        Navigator.pushNamed(context, '/error');
       }
     }
 
@@ -233,8 +235,9 @@ class DetailPage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    _launchURL(
-                        'https://www.google.com/maps/d/u/0/viewer?mid=1rhV4GjImlHrz7xSuoBil3mPFCBY&hl=en&ll=-7.794972035418176%2C110.36444149999998&z=16');
+                    // _launchURL(
+                    //     'https://www.google.com/maps/d/u/0/viewer?mid=1rhV4GjImlHrz7xSuoBil3mPFCBY&hl=en&ll=-7.794972035418176%2C110.36444149999998&z=16');
+                    _launchURL('qwertyuiop');
                   },
                   child: Image.asset(
                     'assets/icon_location.png',
