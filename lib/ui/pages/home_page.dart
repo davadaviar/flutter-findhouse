@@ -179,7 +179,7 @@ class HomePage extends StatelessWidget {
 
                     return Container(
                       margin: EdgeInsets.only(
-                        top: index == 1 ? 0 : 30,
+                        top: index == 1 ? 0 : 20,
                       ),
                       child: CustomSpaceCard(item),
                     );
