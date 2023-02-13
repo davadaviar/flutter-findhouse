@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_findhouse/models/facilities.dart';
 import 'package:flutter_findhouse/models/space.dart';
 import 'package:flutter_findhouse/ui/pages/error_page.dart';
+import 'package:flutter_findhouse/ui/widgets/custom_rating.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_button.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_facilities_item.dart';
@@ -73,28 +74,16 @@ class DetailPage extends StatelessWidget {
             ),
             Spacer(),
             Row(
-              children: [
-                Image.asset(
-                  'assets/icon_star.png',
-                  width: 20,
-                ),
-                Image.asset(
-                  'assets/icon_star.png',
-                  width: 20,
-                ),
-                Image.asset(
-                  'assets/icon_star.png',
-                  width: 20,
-                ),
-                Image.asset(
-                  'assets/icon_star.png',
-                  width: 20,
-                ),
-                Image.asset(
-                  'assets/icon_star_grey.png',
-                  width: 20,
-                ),
-              ],
+              children: [1, 2, 3, 4, 5].map(
+                (index) {
+                  return Container(
+                    child: RatingItem(
+                      index: index,
+                      rating: this.space.rating,
+                    ),
+                  );
+                },
+              ).toList(),
             )
           ],
         ),
