@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_findhouse/models/gallery.dart';
+import 'package:flutter_findhouse/models/space.dart';
 import '../../shared/themes.dart';
 
 class CustomGalleryItem extends StatelessWidget {
+  final Space space;
 
-  final Gallery gallery;
-
-  CustomGalleryItem(this.gallery);
+  CustomGalleryItem(this.space);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +16,7 @@ class CustomGalleryItem extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(defaultRadius),
         image: DecorationImage(
-          image: AssetImage(this.gallery.imgUrl),
+          image: NetworkImage('${this.space.photos}'),
           fit: BoxFit.cover,
         ),
       ),

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_findhouse/models/facilities.dart';
-import 'package:flutter_findhouse/models/gallery.dart';
 import 'package:flutter_findhouse/models/space.dart';
 import 'package:flutter_findhouse/ui/pages/error_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_button.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_facilities_item.dart';
-import 'package:flutter_findhouse/ui/widgets/custom_gallery_item.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '../../shared/themes.dart';
 
@@ -44,7 +42,7 @@ class DetailPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Kuretakeso Hott',
+                  this.space.name,
                   style: blackTextStyle.copyWith(
                     fontSize: 22,
                     fontWeight: semiBold,
@@ -53,7 +51,7 @@ class DetailPage extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      '\$52',
+                      '\$${this.space.price}',
                       style: purpleTextStyle.copyWith(
                         fontSize: 16,
                         fontWeight: medium,
@@ -129,21 +127,21 @@ class DetailPage extends StatelessWidget {
                   Facilities(
                     title: 'Kitchen',
                     imgUrl: 'assets/icon_kitchen.png',
-                    item: 2,
+                    item: this.space.numberOfKitchens,
                   ),
                 ),
                 CustomFacilitiesItem(
                   Facilities(
                     title: 'Bedroom',
                     imgUrl: 'assets/icon_bedroom.png',
-                    item: 3,
+                    item: this.space.numberOfBedRooms,
                   ),
                 ),
                 CustomFacilitiesItem(
                   Facilities(
                     title: 'Cupboard',
                     imgUrl: 'assets/icon_lemari.png',
-                    item: 3,
+                    item: this.space.numberOfCupboards,
                   ),
                 ),
               ],
@@ -174,35 +172,25 @@ class DetailPage extends StatelessWidget {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
-                children: [
-                  CustomGalleryItem(
-                    Gallery(imgUrl: 'assets/photo1.png'),
-                  ),
-                  SizedBox(
-                    width: 16,
-                  ),
-                  CustomGalleryItem(
-                    Gallery(imgUrl: 'assets/photo2.png'),
-                  ),
-                  SizedBox(
-                    width: 16,
-                  ),
-                  CustomGalleryItem(
-                    Gallery(imgUrl: 'assets/photo3.png'),
-                  ),
-                  SizedBox(
-                    width: 16,
-                  ),
-                  CustomGalleryItem(
-                    Gallery(imgUrl: 'assets/photo4.png'),
-                  ),
-                  SizedBox(
-                    width: 16,
-                  ),
-                  CustomGalleryItem(
-                    Gallery(imgUrl: 'assets/photo5.png'),
-                  ),
-                ],
+                children: this.space.photos.map(
+                  (item) {
+                    return Container(
+                      margin: EdgeInsets.only(
+                        top: 16,
+                        right: 15,
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(defaultRadius),
+                        child: Image.network(
+                          item,
+                          width: 130,
+                          height: 88,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    );
+                  },
+                ).toList(),
               ),
             ),
           ],
@@ -236,7 +224,7 @@ class DetailPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Jln. Kappan Sukses No. 20, \nPalembang',
+                  '${this.space.address} \n${this.space.city}, ${this.space.country}',
                   style: greyTextStyle.copyWith(
                     fontSize: 14,
                     fontWeight: regular,
@@ -246,7 +234,7 @@ class DetailPage extends StatelessWidget {
                   onTap: () {
                     // _launchURL(
                     //     'https://www.google.com/maps/d/u/0/viewer?mid=1rhV4GjImlHrz7xSuoBil3mPFCBY&hl=en&ll=-7.794972035418176%2C110.36444149999998&z=16');
-                    _launchURL('qwertyuiop');
+                    _launchURL('${this.space.mapUrl}');
                   },
                   child: Image.asset(
                     'assets/icon_location.png',
@@ -274,7 +262,7 @@ class DetailPage extends StatelessWidget {
           title: 'Book Now',
           width: 380,
           onPressed: () {
-            _launchURL('tel://+6281357109966');
+            _launchURL('tel://${this.space.phone}');
           },
         ),
       );
@@ -284,9 +272,11 @@ class DetailPage extends StatelessWidget {
       backgroundColor: backgroundColor,
       body: Stack(
         children: [
-          Image.asset(
-            'assets/thumbnail.png',
+          Image.network(
+            this.space.imageUrl,
             width: MediaQuery.of(context).size.width,
+            height: 400,
+            fit: BoxFit.cover,
           ),
           ListView(
             children: [
