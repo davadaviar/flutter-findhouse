@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_findhouse/models/city.dart';
 import 'package:flutter_findhouse/models/space.dart';
 import 'package:flutter_findhouse/models/tips.dart';
+import 'package:flutter_findhouse/providers/space_provider.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_bottom_navbar.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_cities_card.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_space_card.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_tips_card.dart';
+import 'package:provider/provider.dart';
 import '../../shared/themes.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
   @override
   Widget build(BuildContext context) {
+    var spaceProvider = Provider.of<SpaceProvider>(context);
+    spaceProvider.getRecommendedSpace();
+
     Widget bodyContent() {
       Widget header() {
         return Padding(
@@ -142,54 +145,30 @@ class HomePage extends StatelessWidget {
             top: 30,
             left: defaultMargin,
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Recommended Space',
-                style: blackTextStyle.copyWith(
-                  fontSize: 18,
-                  fontWeight: regular,
-                ),
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              CustomSpaceCard(
-                Space(
-                  id: 0,
-                  name: 'Kuratakeso Hott',
-                  imageUrl: 'assets/space1.png',
-                  price: 52,
-                  rating: 4,
-                  city: 'Bandung, Indonesia',
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              CustomSpaceCard(Space(
-                id: 1,
-                name: 'Roemah Ayang',
-                imageUrl: 'assets/space2.png',
-                price: 80,
-                rating: 5,
-                city: 'Semarang, Indonesia',
-              )),
-              SizedBox(
-                height: 30,
-              ),
-              CustomSpaceCard(
-                Space(
-                  id: 2,
-                  name: 'Cangkruakan Mbah Min',
-                  imageUrl: 'assets/space3.png',
-                  price: 60,
-                  rating: 4,
-                  city: 'Bogor, Indonesia',
-                ),
-              ),
-            ],
+          child: FutureBuilder(
+            future: spaceProvider.getRecommendedSpace(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                List<Space> data = snapshot.data;
+
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: data.map((item) {
+                    final int index = 0;
+
+                    return Container(
+                      margin: EdgeInsets.only(
+                        top: index == 1 ? 0 : 30,
+                      ),
+                      child: CustomSpaceCard(item),
+                    );
+                  }).toList(),
+                );
+              }
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            },
           ),
         );
       }
