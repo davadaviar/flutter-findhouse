@@ -20,12 +20,7 @@ class MyApp extends StatelessWidget {
       create: (context) => SpaceProvider(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        routes: {
-          '/': (context) => SplashPage(),
-          '/home': (context) => HomePage(),
-          '/detail': (context) => DetailPage(),
-          '/error': (context) => ErrorPage(),
-        },
+        home: SplashPage(),
       ),
     );
   }

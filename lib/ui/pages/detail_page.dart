@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_findhouse/models/facilities.dart';
 import 'package:flutter_findhouse/models/gallery.dart';
+import 'package:flutter_findhouse/models/space.dart';
+import 'package:flutter_findhouse/ui/pages/error_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_button.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_facilities_item.dart';
@@ -9,7 +11,9 @@ import 'package:url_launcher/url_launcher_string.dart';
 import '../../shared/themes.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({super.key});
+  final Space space;
+
+  DetailPage(this.space);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +22,12 @@ class DetailPage extends StatelessWidget {
         await launchUrlString(url);
       } else {
         // throw 'Could not launch $url';
-        Navigator.pushNamed(context, '/error');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ErrorPage(),
+          ),
+        );
       }
     }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_findhouse/models/space.dart';
+import 'package:flutter_findhouse/ui/pages/detail_page.dart';
 import '../../shared/themes.dart';
 
 class CustomSpaceCard extends StatelessWidget {
@@ -11,7 +12,12 @@ class CustomSpaceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/detail');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailPage(space),
+          ),
+        );
       },
       child: Container(
         child: Row(

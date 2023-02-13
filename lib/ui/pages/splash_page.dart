@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_findhouse/ui/pages/home_page.dart';
 import 'package:flutter_findhouse/ui/widgets/custom_button.dart';
 import '../../shared/themes.dart';
 
@@ -64,7 +65,12 @@ class SplashPage extends StatelessWidget {
                     title: 'Explore Now',
                     width: 180,
                     onPressed: () {
-                      Navigator.pushNamed(context, '/home');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(),
+                        ),
+                      );
                     },
                   )
                 ],
