@@ -22,7 +22,7 @@ class CustomSpaceCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(defaultRadius),
                 image: DecorationImage(
-                  image: AssetImage(this.space.imageUrl),
+                  image: NetworkImage(this.space.imageUrl),
                   fit: BoxFit.cover,
                 ),
               ),

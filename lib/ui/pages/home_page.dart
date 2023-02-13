@@ -139,10 +139,31 @@ class HomePage extends StatelessWidget {
 
       ;
 
-      Widget recommendedSpace() {
+      Widget recommendedSpaceHeader() {
         return Padding(
           padding: EdgeInsets.only(
             top: 30,
+            left: defaultMargin,
+            right: defaultMargin,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Recommended Spaces',
+                style: blackTextStyle.copyWith(
+                  fontSize: 18,
+                  fontWeight: regular,
+                ),
+              ),
+            ],
+          ),
+        );
+      }
+
+      Widget recommendedSpaceList() {
+        return Padding(
+          padding: EdgeInsets.only(
             left: defaultMargin,
           ),
           child: FutureBuilder(
@@ -226,7 +247,8 @@ class HomePage extends StatelessWidget {
         children: [
           header(),
           citiesSlide(),
-          recommendedSpace(),
+          recommendedSpaceHeader(),
+          recommendedSpaceList(),
           tipsGuideline(),
         ],
       );
