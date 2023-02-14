@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "875031275115",
+    "project_id": "flutter-findkos",
+    "storage_bucket": "flutter-findkos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:875031275115:android:c2709af0ced12eaf37b32e",
+        "android_client_info": {
+          "package_name": "com.daviar.flutter_findhouse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "875031275115-hu52c2qjrcsllaus33trsb3hkh9vqd2s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDA8zSNoyHjT2-ZHcFK0NLU-yoSJPxoJoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "875031275115-hu52c2qjrcsllaus33trsb3hkh9vqd2s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
