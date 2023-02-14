@@ -24,15 +24,7 @@ if (flutterVersionName == null) {
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
-
-plugins {
-  id 'com.android.application'
-
-  // Add the Google services Gradle plugin
-  id 'com.google.gms.google-services'
-
-  ...
-}
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 33
@@ -74,6 +66,7 @@ android {
 flutter {
     source '../..'
 }
+
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

@@ -9,10 +9,17 @@ import 'package:flutter_findhouse/ui/widgets/custom_facilities_item.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import '../../shared/themes.dart';
 
-class DetailPage extends StatelessWidget {
+class DetailPage extends StatefulWidget {
   final Space space;
 
   DetailPage(this.space);
+
+  @override
+  State<DetailPage> createState() => _DetailPageState();
+}
+
+class _DetailPageState extends State<DetailPage> {
+  bool isClicked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +50,7 @@ class DetailPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  this.space.name,
+                  this.widget.space.name,
                   style: blackTextStyle.copyWith(
                     fontSize: 22,
                     fontWeight: semiBold,
@@ -52,7 +59,7 @@ class DetailPage extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      '\$${this.space.price}',
+                      '\$${this.widget.space.price}',
                       style: purpleTextStyle.copyWith(
                         fontSize: 16,
                         fontWeight: medium,
@@ -79,7 +86,7 @@ class DetailPage extends StatelessWidget {
                   return Container(
                     child: RatingItem(
                       index: index,
-                      rating: this.space.rating,
+                      rating: this.widget.space.rating,
                     ),
                   );
                 },
@@ -116,21 +123,21 @@ class DetailPage extends StatelessWidget {
                   Facilities(
                     title: 'Kitchen',
                     imgUrl: 'assets/icon_kitchen.png',
-                    item: this.space.numberOfKitchens,
+                    item: this.widget.space.numberOfKitchens,
                   ),
                 ),
                 CustomFacilitiesItem(
                   Facilities(
                     title: 'Bedroom',
                     imgUrl: 'assets/icon_bedroom.png',
-                    item: this.space.numberOfBedRooms,
+                    item: this.widget.space.numberOfBedRooms,
                   ),
                 ),
                 CustomFacilitiesItem(
                   Facilities(
                     title: 'Cupboard',
                     imgUrl: 'assets/icon_lemari.png',
-                    item: this.space.numberOfCupboards,
+                    item: this.widget.space.numberOfCupboards,
                   ),
                 ),
               ],
@@ -161,7 +168,7 @@ class DetailPage extends StatelessWidget {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
-                children: this.space.photos.map(
+                children: this.widget.space.photos.map(
                   (item) {
                     return Container(
                       margin: EdgeInsets.only(
@@ -213,7 +220,7 @@ class DetailPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '${this.space.address} \n${this.space.city}, ${this.space.country}',
+                  '${this.widget.space.address} \n${this.widget.space.city}, ${this.widget.space.country}',
                   style: greyTextStyle.copyWith(
                     fontSize: 14,
                     fontWeight: regular,
@@ -223,7 +230,7 @@ class DetailPage extends StatelessWidget {
                   onTap: () {
                     // _launchURL(
                     //     'https://www.google.com/maps/d/u/0/viewer?mid=1rhV4GjImlHrz7xSuoBil3mPFCBY&hl=en&ll=-7.794972035418176%2C110.36444149999998&z=16');
-                    _launchURL('${this.space.mapUrl}');
+                    _launchURL('${this.widget.space.mapUrl}');
                   },
                   child: Image.asset(
                     'assets/icon_location.png',
@@ -251,7 +258,7 @@ class DetailPage extends StatelessWidget {
           title: 'Book Now',
           width: 380,
           onPressed: () {
-            _launchURL('tel://${this.space.phone}');
+            _launchURL('tel://${this.widget.space.phone}');
           },
         ),
       );
@@ -262,7 +269,7 @@ class DetailPage extends StatelessWidget {
       body: Stack(
         children: [
           Image.network(
-            this.space.imageUrl,
+            this.widget.space.imageUrl,
             width: MediaQuery.of(context).size.width,
             height: 400,
             fit: BoxFit.cover,
@@ -286,9 +293,18 @@ class DetailPage extends StatelessWidget {
                         width: 50,
                       ),
                     ),
-                    Image.asset(
-                      'assets/btn_wishlist.png',
-                      width: 50,
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isClicked = !isClicked;
+                        });
+                      },
+                      child: Image.asset(
+                        isClicked
+                            ? 'assets/btn_wishlist_active.png'
+                            : 'assets/btn_wishlist.png',
+                        width: 50,
+                      ),
                     ),
                   ],
                 ),
