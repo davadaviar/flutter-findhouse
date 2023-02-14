@@ -37,6 +37,32 @@ class _DetailPageState extends State<DetailPage> {
       }
     }
 
+    Future<void> showConfirmation() async {
+      return showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+                title: const Text('Konfirmasi'),
+                content:
+                    const Text('Apakah kamu ingin menghubungi pemilik kos?'),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context, 'Cancel');
+                    },
+                    child: const Text('Cancel'),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context, 'OK');
+                      _launchURL('tel://${this.widget.space.phone}');
+                    },
+                    child: const Text('OK'),
+                  ),
+                ]);
+          });
+    }
+
     Widget header() {
       return Padding(
         padding: EdgeInsets.only(
@@ -258,7 +284,8 @@ class _DetailPageState extends State<DetailPage> {
           title: 'Book Now',
           width: 380,
           onPressed: () {
-            _launchURL('tel://${this.widget.space.phone}');
+            // _launchURL('tel://${this.widget.space.phone}');
+            showConfirmation();
           },
         ),
       );
